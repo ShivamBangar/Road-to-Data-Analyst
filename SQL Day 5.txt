@@ -1,0 +1,33 @@
+SELECT distinct city
+from station
+where city like '%a'
+OR city like '%e'
+or city like '%i'
+OR city like '%o'
+OR city like '%u'
+
+
+
+SELECT DISTINCT CITY
+FROM STATION
+WHERE CITY LIKE '[aeiou]%[aeiou]';
+
+
+SELECT distinct city
+from station
+where city not LIKE '[aeiou]%'
+
+
+SELECT distinct city
+from station
+where city not like '%[aeiou]'
+
+
+SELECT distinct city
+from station
+where city not LIKE '[aeiou]%' or city not like '%[aeiou]'
+
+
+select distinct city
+from station
+where city not like '%[aeiou]' and city not like '[aeiou]%'
