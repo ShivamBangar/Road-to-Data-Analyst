@@ -1,0 +1,24 @@
+Samantha was tasked with calculating the average monthly salaries for all employees in the EMPLOYEES table,
+but did not realize her keyboard's '0' key was broken until after completing the calculation.
+She wants your help finding the difference between her miscalculation (using salaries with any zeros removed),
+and the actual average salary.
+
+Write a query calculating the amount of error (i.e.:  average monthly salaries), and round it up to the next integer.
+
+
+ORACLE SERVER:-
+
+WITH A AS
+(SELECT SALARY FROM EMPLOYEES WHERE SALARY BETWEEN 1000 AND 100000)
+SELECT CEIL(AVG(SALARY) - AVG(TO_NUMBER(TO_CHAR(REPLACE(SALARY,0,'')))))
+  FROM A ;
+
+
+MY SQL SERVER:-
+
+SELECT CEILING(
+AVG(CAST(salary AS DECIMAL(10,2)))
+-
+AVG(CAST(REPLACE(salary, 0, '') AS DECIMAL(10,2)))
+)
+FROM employees;
