@@ -1,0 +1,17 @@
+Average Population of Each Continent
+
+Q.) Given the CITY and COUNTRY tables, query the names of all the continents (COUNTRY.Continent) 
+    and their respective average city populations (CITY.Population) rounded down to the nearest integer.
+
+    Note: CITY.CountryCode and COUNTRY.Code are matching key columns.
+
+ANSWER:- 
+
+SELECT B.CONTINENT,CAST (ISNULL( AVG(A.POPULATION),0) AS DECIMAL (10,00))
+FROM
+CITY AS a
+INNER JOIN
+COUNTRY AS B
+ON
+A.COUNTRYCODE = B.CODE
+GROUP BY B.CONTINENT
